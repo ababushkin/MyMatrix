@@ -5,7 +5,7 @@ This browser extensions provides a series of enhancements and tools to empower d
 
 If you want to make yourself a more efficient MySource / Squiz Matrix user then this is the extension for you.
 
-**Latest release**: 1.2
+**Latest release**: 1.3 alpha
 
 **Supported browsers**:
 
@@ -17,7 +17,7 @@ Features
 
 * Drag and Drop File Uploads;
 * Seamless Saving;
-* Inline syntax highlighting for RAW bodycopies (e.g Designs, CSS and JavaScript files);
-* Enhancements to the user interface when using certain asset types (e.g. Asset Listings);
-* Cache buster (Google Chrome);
+* Syntax Highlighter;
+* Smart Type Selector
+* Cache Buster;
 * WYSIWYG replacement (experimental).
