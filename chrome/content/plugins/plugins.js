@@ -13,13 +13,17 @@
 	* (function - bool) detect - code that will detect if this feature is present on the current screen.
 */
 
+var mwscope;
+
 if (typeof(content) == "undefined" || !content) {
-    var mwscope = window;
+    mwscope = window.location.href;
+} else if (typeof(content.frames[3]) !== "undefined") {
+    mwscope = content.frames[3].location.href;
 } else {
-    var mwscope = content.frames[3];
+    mwscope = "browser.xul";
 }
 
-if ( mwscope.location.href.search(/(sq_backend_page=main|chrome-extension|browser.xul)/i) > -1 ) {
+if ( mwscope.search(/(sq_backend_page=main|chrome-extension|browser.xul)/i) > -1 ) {
     if (!myMatrix) {
         var myMatrix = {};
     }
@@ -57,7 +61,7 @@ if ( mwscope.location.href.search(/(sq_backend_page=main|chrome-extension|browse
             "description": "",
             "layout_type": "checkbox",
             "experimental": true,
-            "platforms": [ "firefox" ],
+            "platforms": "firefox",
             "path": "WYSIWYG/CKEditor/",
             "js": [ "ckeditor.js", "config.js", "ckeditor-init.js" ],
             "css": [ "contents.css" ],
@@ -226,8 +230,9 @@ if ( mwscope.location.href.search(/(sq_backend_page=main|chrome-extension|browse
             detect: function(){
                 return myMatrix.aboutTab.isMatrixBackend;
             },
-            init: function(){},
-            destroy: function(){}
+            onclick: function(){
+                alert ("hi");
+            }
         },
         {
             "id": "keyboardShortcuts",

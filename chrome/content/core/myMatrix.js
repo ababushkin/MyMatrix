@@ -23,6 +23,7 @@ var myMatrix = {
     error: function(message) {},
     log: function(message) {},
     dump: function(obj) {},
+    utils: {},
 
     // common methods
     enabledPlugins: function() {
