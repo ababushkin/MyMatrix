@@ -1,10 +1,10 @@
 /*
 	Plugin definitions file.
-	These are intended to be as cross-browser compatible as possible to ensure easily portability.
+	These are intended to be as cross-browser compatible as possible to maximise portability.
 	
 	Specification:
 	
-	Every feature item is a JavaScript object stored in an Array with the following properties.
+	Every feature item is a JavaScript object stored in an Array with the following attributes:
 	* (string) id - a unique identifier, primarily used on the options screen.
 	* (string) name - the friendly name for the feature, used on the options screen.
 	* (string) description - a little description about what this plugin does (optional).
@@ -36,13 +36,14 @@ if ( mwscope.search(/(sq_backend_page=main|chrome-extension|browser.xul)/i) > -1
             "layout_type": "checkbox",
             "experimental": false,
             "path": "SyntaxHighlighter/CodeMirror/",
-            "css": [ "codemirror.css", "default.css", "elegant.css", "neat.css", "night.css" ],
-            "js": [ "codemirror-compressed.js", "codemirror-init.js" ],
-            //"path": "SyntaxHighlighter/ace/",
-            //"js": [ "ace.js", "mode-css.js", "mode-javascript.js", "mode-json.js", "mode-xml.js", "mode-html.js", "theme-textmate.js", "ace-init.js" ],
-
+            "css": [ "codemirror.css", "theme/mymatrix.css", "theme/neat.css" ],
+            "js": [ "codemirror.js", "mode/javascript.js", "mode/css.js", "mode/htmlmixed.js", "util/runmode.js", "codemirror-init.js" ],
             detect: function(){
-                var textareas = document.getElementsByTagName("textarea"), tExists = false;
+                var textareas = document.getElementsByTagName("textarea"),
+                  preTags = document.getElementsByTagName("pre"),
+                  tExists = false;
+
+                // Check for textareas first
                 for (var counter in textareas) {
                     var t = textareas[counter];
                     if (typeof(t.id) !== "undefined" && t.id.search(/wysiwyg/) === -1) {
@@ -50,6 +51,12 @@ if ( mwscope.search(/(sq_backend_page=main|chrome-extension|browser.xul)/i) > -1
                         break;
                     }
                 }
+
+              // Check for pre tags
+              if (preTags.length > 0) {
+                tExists = true;
+              }
+
                 return ((myMatrix.aboutTab.assetScreen.search(/(edit_file|parse_file|contents)/) > -1) && tExists) ? true : false;
             },
             init: function(){},
@@ -233,68 +240,68 @@ if ( mwscope.search(/(sq_backend_page=main|chrome-extension|browser.xul)/i) > -1
             onclick: function(){
                 alert ("hi");
             }
-        },
-        {
-            "id": "keyboardShortcuts",
-            "name": "Keyboard Shortcut Guide",
-            "description": "Keyboard shortcut reference guide.",
-            "experimental": false,
-            "path": "",
-            "css": [],
-            "js": [],
-            detect: function(){
-                return myMatrix.aboutTab.isMatrixBackend;
-            },
-            init: function(){
-                // TODO: Move this into a separate plugin file
-    //			var self = this;
-    //			myMatrix.injectStyleSheet("keyboard-shortcuts-css", myMatrix.settings.paths.plugins + "KeyboardShortcuts/keyboard-shortcuts.css");
-    //			window.addEventListener("keypress", function(e){
-    //				var main = document;
-    //				if (e.shiftKey && e.keyCode === 27) {
-    //					if (!main.getElementById("myMatrix-help-menu")) {
-    //						var helpMenu = main.createElement("div"), close = main.createElement("p"), shortCutKeys;
-    //						helpMenu.setAttribute("id", "myMatrix-help-menu");
-    //						close.textContent = "Close";
-    //						close.addEventListener("click", function(){
-    //							var main = document;
-    //							main.body.removeChild(main.getElementById("myMatrix-help-menu"));
-    //						}, false);
-    //						main.body.appendChild(helpMenu)
-    //						helpMenu.appendChild(close);
-    //						self.keyboardShortcuts.forEach(function(v){
-    //							if (typeof(v.section) === "undefined") {
-    //								var shortCutKey = main.createElement("li");
-    //								if (window.navigator.platform.search(/mac/i) > -1) {
-    //									shortCutKey.innerHTML = "<div class='key'>" + v.mac + ":</div><div class='action'>" + v.action + "</div>";
-    //								} else {
-    //									shortCutKey.innerHTML = "<div class='key'>" + v.win + ":</div><div class='action'>" + v.action + "</div>";
-    //								}
-    //								shortCutKeys.appendChild(shortCutKey);
-    //							} else {
-    //								var heading = main.createElement("h1");
-    //								shortCutKeys = main.createElement("ul");
-    //								heading.textContent = v.section;
-    //								helpMenu.appendChild(heading);
-    //								helpMenu.appendChild(shortCutKeys);
-    //							}
-    //						});
-    //					}
-    //				}
-    //				if (!e.shiftKey && e.keyCode === 27) {
-    //					main.body.removeChild(main.getElementById("myMatrix-help-menu"));
-    //				}
-    //			}, false);
-            },
-            destroy: function(){},
-            keyboardShortcuts: [
-                { "section": "Squiz Matrix Interface" },
-                { "action": "Acquire Lock", "win": "Alt + A", "mac": "Ctrl + A" },
-                { "action": "Release Lock", "win": "Alt + R", "mac": "Ctrl + R" },
-                { "action": "Save", "win": "Alt + Shift + S", "mac": "Ctrl + S"  },
-                { "action": "HIPO - Next", "win": "Alt + N", "mac": "Ctrl + N" }
-            ]
         }
+//        {
+//            "id": "keyboardShortcuts",
+//            "name": "Keyboard Shortcut Guide",
+//            "description": "Keyboard shortcut reference guide.",
+//            "experimental": false,
+//            "path": "",
+//            "css": [],
+//            "js": [],
+//            detect: function(){
+//                return myMatrix.aboutTab.isMatrixBackend;
+//            },
+//            init: function(){
+//                // TODO: Move this into a separate plugin file
+//    			var self = this;
+//    			myMatrix.injectStyleSheet("keyboard-shortcuts-css", myMatrix.settings.paths.plugins + "KeyboardShortcuts/keyboard-shortcuts.css");
+//    			window.addEventListener("keypress", function(e){
+//    				var main = document;
+//    				if (e.shiftKey && e.keyCode === 27) {
+//    					if (!main.getElementById("myMatrix-help-menu")) {
+//    						var helpMenu = main.createElement("div"), close = main.createElement("p"), shortCutKeys;
+//    						helpMenu.setAttribute("id", "myMatrix-help-menu");
+//    						close.textContent = "Close";
+//    						close.addEventListener("click", function(){
+//    							var main = document;
+//    							main.body.removeChild(main.getElementById("myMatrix-help-menu"));
+//    						}, false);
+//    						main.body.appendChild(helpMenu)
+//    						helpMenu.appendChild(close);
+//    						self.keyboardShortcuts.forEach(function(v){
+//    							if (typeof(v.section) === "undefined") {
+//    								var shortCutKey = main.createElement("li");
+//    								if (window.navigator.platform.search(/mac/i) > -1) {
+//    									shortCutKey.innerHTML = "<div class='key'>" + v.mac + ":</div><div class='action'>" + v.action + "</div>";
+//    								} else {
+//    									shortCutKey.innerHTML = "<div class='key'>" + v.win + ":</div><div class='action'>" + v.action + "</div>";
+//    								}
+//    								shortCutKeys.appendChild(shortCutKey);
+//    							} else {
+//    								var heading = main.createElement("h1");
+//    								shortCutKeys = main.createElement("ul");
+//    								heading.textContent = v.section;
+//    								helpMenu.appendChild(heading);
+//    								helpMenu.appendChild(shortCutKeys);
+//    							}
+//    						});
+//    					}
+//    				}
+//    				if (!e.shiftKey && e.keyCode === 27) {
+//    					main.body.removeChild(main.getElementById("myMatrix-help-menu"));
+//    				}
+//    			}, false);
+//            },
+//            destroy: function(){},
+//            keyboardShortcuts: [
+//                { "section": "Squiz Matrix Interface" },
+//                { "action": "Acquire Lock", "win": "Alt + A", "mac": "Ctrl + A" },
+//                { "action": "Release Lock", "win": "Alt + R", "mac": "Ctrl + R" },
+//                { "action": "Save", "win": "Alt + Shift + S", "mac": "Ctrl + S"  },
+//                { "action": "HIPO - Next", "win": "Alt + N", "mac": "Ctrl + N" }
+//            ]
+//        }
     ]
 
 }

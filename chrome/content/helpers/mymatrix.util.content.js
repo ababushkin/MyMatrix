@@ -16,7 +16,7 @@ myMatrix.util.chopContent = function(content, startPointRegex, endPointRegex) {
     content = content.substring(start, end);
 
     return content;
-}
+};
 
 // Set of Regular Expressions for finding elements, stripping out elements. Faster than using jQuery.
 myMatrix.util.regex = {
@@ -29,4 +29,4 @@ myMatrix.util.regex = {
     styleBlock: /(<style [^>]*)(.|\s)*?(<\/style>).*/g,
     allImages: /<img [^>]*>/g,
     onClick: /onclick=\s*"[^"]*"/
-}
+};

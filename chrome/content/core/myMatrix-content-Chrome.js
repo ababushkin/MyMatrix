@@ -3,7 +3,7 @@
 if (window.location.href.search(/sq_backend_page=main/i) > -1) {
     myMatrix.sendRequest = function(msg) {
         chrome.extension.sendRequest(msg);
-    }
+    };
 
     myMatrix.updateImageReference = function($el, plugin) {
        if ($el.css("background-image") != "") {
@@ -12,7 +12,7 @@ if (window.location.href.search(/sq_backend_page=main/i) > -1) {
             var newBg = $el.css("background-image").replace(window.location.origin + window.location.pathname, chrome.extension.getURL("chrome/content/plugins/" + plugin.path));
             $el.css("background-image", newBg);
         }
-    }
+    };
 
     myMatrix.watchElement = function($el, prop, plugin, callback) {
         var attr = typeof($el.attr(prop)) === "undefined" ? "-" : $el.attr(prop);
@@ -27,7 +27,7 @@ if (window.location.href.search(/sq_backend_page=main/i) > -1) {
                 callback($el, plugin);
             }
         }, 100);
-    }
+    };
 
     chrome.extension.onRequest.addListener(function(response, sender) {
         switch (response.msg) {

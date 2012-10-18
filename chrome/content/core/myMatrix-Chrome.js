@@ -3,7 +3,7 @@ myMatrix.settings.paths = {
     core: "chrome/content/core/",
     plugins: "chrome/content/plugins/",
     helpers: "chrome/content/helpers/"
-}
+};
 
 myMatrix.init = function() {
     chrome.extension.onRequest.addListener(function(request, sender) {
@@ -71,29 +71,29 @@ myMatrix.init = function() {
                 break;
         }
     });
-}
+};
 
 myMatrix.error = function(message){
     if (myMatrix.settings.debug) console.log(message);
-}
+};
 
 myMatrix.dump = function(obj){
     if (myMatrix.settings.debug) console.log(obj);
-}
+};
 
 myMatrix.executeScript = function(tabID, src) {
     chrome.tabs.executeScript(tabID, {
         file: src,
         allFrames: true
     });
-}
+};
 
 myMatrix.insertCSS = function(tabID, href) {
     chrome.tabs.insertCSS(tabID, {
         file: href,
         allFrames: true
     });
-}
+};
 
 window.addEventListener("DOMContentLoaded", function(){
     myMatrix.preferences.init();

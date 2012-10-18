@@ -20,7 +20,7 @@ function job(id, callback) {
     this.id = id;
     this.status = "running";
     this.completedListeners = [callback];
-};
+}
 
 function findJob(hipo_job_id) {
     if (hipo_job_id) {
@@ -35,7 +35,7 @@ function findJob(hipo_job_id) {
     } else {
         return null;
     }
-};
+}
 
 function findJobIndex(hipo_job_id) {
     var job_index = 0;
@@ -46,7 +46,7 @@ function findJobIndex(hipo_job_id) {
         }
     });
     return job_index;
-};
+}
 
 job.prototype = {		
     /*
@@ -225,5 +225,5 @@ myMatrix.utils.HIPO = {
             return false;
         }
     }
-}
+};
 

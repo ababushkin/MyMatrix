@@ -120,7 +120,7 @@ myMatrix.sendRequest = function(msg) {
     var evt = content.frames[3].document.createEvent("HTMLEvents");
     evt.initEvent("myMatrix-ExtensionMessage", true, false);
     elm.dispatchEvent(evt);
-}
+};
 
 myMatrix.onRequest = function(response) {
     switch (response.msg) {
