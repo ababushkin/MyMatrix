@@ -1,0 +1,15 @@
+.CodeMirror { 
+	font-family: Monaco, monospace, sans-serif;
+	font-size: 1.3em;
+}
+
+.myMatrix-cm {
+    background-color: #eee;
+    padding: 8px;
+}
+
+.CodeMirror-scroll {
+	height: auto;
+	overflow-y: hidden;
+	overflow-x: auto;
+}

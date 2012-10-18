@@ -1,10 +1,10 @@
 myMatrix.gui.highlightButton = function() {
     chrome.browserAction.setIcon({ path: "/skin/button-active.png" });
-}
+};
 
 myMatrix.gui.dimButton = function() {
     chrome.browserAction.setIcon({ path: "/skin/button-inactive.png" });
-}
+};
 
 myMatrix.gui.drawOptions = function() {
     if (myMatrix.preferences.getPreference("enabled")) {
@@ -43,7 +43,7 @@ myMatrix.gui.drawOptions = function() {
             }
         }, false);
     }
-}
+};
 
 myMatrix.gui.insertDependants = function(plugin) {
     if (typeof(plugin.js) !== "undefined" && plugin.js && plugin.layout_type === "action_button") {
@@ -62,4 +62,4 @@ myMatrix.gui.insertDependants = function(plugin) {
             document.getElementsByTagName("head")[0].appendChild(link);
         });
     }
-}
+};

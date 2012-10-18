@@ -3,7 +3,7 @@ myMatrix.settings.paths = {
     core: "chrome://mymatrix/content/core/",
     plugins: "chrome://mymatrix/content/plugins/",
     helpers: "chrome://mymatrix/content/helpers/"
-}
+};
 
 myMatrix.init = function() {
     if (myMatrix.preferences.getPreference("initialLoad")) {
@@ -31,15 +31,15 @@ myMatrix.init = function() {
     } else {
         myMatrix.error("Could not find the global browser object. Important event binding failed.");
     }
-}
+};
 
 myMatrix.error = function(message){
     if (myMatrix.settings.debug) Components.utils.reportError(message);
-}
+};
 
 myMatrix.log = function(message) {
     if (myMatrix.settings.debug) myMatrix.console.logStringMessage(message);
-}
+};
 
 myMatrix.dump = function(obj){
     if (myMatrix.settings.debug) {
@@ -49,7 +49,7 @@ myMatrix.dump = function(obj){
         }
         myMatrix.console.logStringMessage(out);
     }
-}
+};
 
 myMatrix.bootstrap = function() {
     if (myMatrix.preferences.isEnabled()) {
@@ -64,7 +64,7 @@ myMatrix.bootstrap = function() {
     } else {
         myMatrix.gui.dimButton();
     }
-}
+};
 
 myMatrix.executeScript = function(id, src) {
     try {
@@ -85,7 +85,7 @@ myMatrix.executeScript = function(id, src) {
     } catch (e) {
        myMatrix.error("Failed inserting script " + id + " reason: " + e.message);
     }
-}
+};
 
 myMatrix.insertCSS = function(id, href) {
     try {
@@ -107,7 +107,7 @@ myMatrix.insertCSS = function(id, href) {
     } catch (e) {
         myMatrix.error("Failed inserting css " + id + " reason: " + e.message);
     }
-}
+};
 
 // Similar to the implementation as found in myMatrix-content-Firefox.js
 // Sends messages to the content script (privileged to non privileged)
@@ -118,7 +118,7 @@ myMatrix.sendRequest = function(msg) {
     var evt = content.frames[3].document.createEvent("HTMLEvents");
     evt.initEvent("myMatrix-ExtensionMessage", true, false);
     elm.dispatchEvent(evt);
-}
+};
 
 myMatrix.onRequest = function(response) {
     switch (response.msg) {
@@ -161,7 +161,7 @@ myMatrix.onRequest = function(response) {
         default:
             break;
     }
-}
+};
 
 window.addEventListener("load", function() {
     myMatrix.preferences.init();

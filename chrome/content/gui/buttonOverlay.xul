@@ -14,7 +14,7 @@
 				<menuitem id="myMatrix-remapManagerUncheck" label="Remap Manager Mass Uncheck" type="checkbox" option="remapManagerUncheck" oncommand="myMatrix.preferences.toggleOption(this)" />
 				<menuitem id="myMatrix-locksHelper" label="Locks Helper" type="checkbox" option="locksHelper" oncommand="myMatrix.preferences.toggleOption(this)" />
 				<menuitem id="myMatrix-smartTypeSelector" label="Smart Type Selector" type="checkbox" option="smartTypeSelector" oncommand="myMatrix.preferences.toggleOption(this)" />
-				<menuitem id="myMatrix-keyboardShortcuts" label="Keyboard Shortcuts Guide" type="checkbox" option="keyboardShortcuts" oncommand="myMatrix.preferences.toggleOption(this)" />
+				<!--<menuitem id="myMatrix-keyboardShortcuts" label="Keyboard Shortcuts Guide" type="checkbox" option="keyboardShortcuts" oncommand="myMatrix.preferences.toggleOption(this)" />-->
                 <menuseparator />
 				<menuitem id="myMatrix-wysiwygReplace" label="Replace WYSIWYG" type="checkbox" option="wysiwygReplace" oncommand="myMatrix.preferences.toggleOption(this)" />
 			</menupopup>

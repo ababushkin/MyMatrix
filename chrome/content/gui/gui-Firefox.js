@@ -1,10 +1,10 @@
 myMatrix.gui.highlightButton = function(){
     document.getElementById("myMatrix-button").className = "toolbarbutton-1 myMatrix-button-active";
-}
+};
 
 myMatrix.gui.dimButton = function(){
     document.getElementById("myMatrix-button").className = "toolbarbutton-1 myMatrix-button-inactive";
-}
+};
 
 myMatrix.gui.updatePreferences = function(){
     var matrixEnabledOption = document.getElementById("myMatrix-enabled");
@@ -19,7 +19,7 @@ myMatrix.gui.updatePreferences = function(){
             }
         });
     }
-}
+};
 
 //https://developer.mozilla.org/En/Code_snippets:Toolbar#Adding_button_by_default
 //https://developer.mozilla.org/en/XUL_School/Appendix_B%3a_Install_and_Uninstall_Scripts#Install_Scripts
@@ -46,4 +46,4 @@ myMatrix.gui.installButton = function(toolbarId, id, afterId){
         toolbar.setAttribute("currentset", toolbar.currentSet);
         document.persist(toolbar.id, "currentset");
     }
-}
+};

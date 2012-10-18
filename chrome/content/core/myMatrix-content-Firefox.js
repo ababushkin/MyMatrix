@@ -10,7 +10,7 @@ myMatrix.sendRequest = function(msg) {
     sender.initEvent("myMatrix-PageMessage", true, false);
 
     request.dispatchEvent(sender);
-}
+};
 
 myMatrix.onRequest = function(response) {
     switch (response.msg) {
@@ -39,13 +39,13 @@ myMatrix.onRequest = function(response) {
         default:
             break;
     }
-}
+};
 
 myMatrix.setupMessageLink = function() {
     var response = document.createElement("div");
     response.setAttribute("id", "myMatrix-MessageLink");
     document.body.appendChild(response);
-}
+};
 
 document.addEventListener("DOMContentLoaded", function(e) {
     myMatrix.setupMessageLink();
