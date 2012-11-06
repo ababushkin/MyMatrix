@@ -9,7 +9,7 @@ If you want to make yourself a more efficient MySource / Squiz Matrix user then 
 
 **Supported browsers**:
 
-* Firefox 4.0 - 10.x
+* Firefox 4.0+
 * Google Chrome
 
 Features
