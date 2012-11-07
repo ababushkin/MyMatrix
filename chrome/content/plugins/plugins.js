@@ -37,7 +37,7 @@ if ( mwscope.search(/(sq_backend_page=main|chrome-extension|browser.xul)/i) > -1
             "experimental": false,
             "path": "SyntaxHighlighter/CodeMirror/",
             "css": [ "codemirror.css", "theme/mymatrix.css", "theme/neat.css" ],
-            "js": [ "codemirror.js", "mode/javascript.js", "mode/css.js", "mode/htmlmixed.js", "util/runmode.js", "codemirror-init.js" ],
+            "js": [ "codemirror.js", "mode/javascript.js", "mode/css.js", "mode/xml.js", "mode/htmlmixed.js", "util/runmode.js", "codemirror-init.js" ],
             detect: function(){
                 var textareas = document.getElementsByTagName("textarea"),
                   preTags = document.getElementsByTagName("pre"),
